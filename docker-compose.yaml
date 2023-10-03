@@ -1,0 +1,40 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./API
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+
+  postgres:
+    build:
+      context: ./DB
+      dockerfile: dockerfile
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
+    volumes:
+      - ./DB/STORER:/var/lib/postgresql/data
+      - ./API/migrations:/docker-entrypoint-initdb.d # Mount the migrations folder
+    ports:
+      - 5432:5432
+    networks:
+      - mynetwork
+
+  webpage:
+    build:
+      context: ./WEBPAGE
+      dockerfile: dockerfile
+    ports:
+      - 3001:3001
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

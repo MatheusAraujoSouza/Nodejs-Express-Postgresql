@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table</title>
+  <link rel="stylesheet" type="text/css" href="/css/table.css">
+</head>
+<body>
+  <a href="/">home</a>
+  <h1>Data Table</h1>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Table data will be populated dynamically using JavaScript -->
+    </tbody>
+  </table>
+
+  <form id="create-user-form">
+    <h2>Create User</h2>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+  <a href="/user">User</a>
+
+  <script src="/js/table.js"></script>
+</body>
+</html>
